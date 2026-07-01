@@ -1,0 +1,116 @@
+[gd_scene load_steps=13 format=3 uid="uid://b6ey0xs1uu3oc"]
+
+[ext_resource type="Shader" uid="uid://cg88p5l0ygvye" path="res://shaders/flash.gdshader" id="1_arvs4"]
+[ext_resource type="Texture2D" uid="uid://djel6ygcmu3b3" path="res://assets/images/shapes/square.svg" id="2_nno83"]
+[ext_resource type="Shader" uid="uid://5rd1c2fix06r" path="res://shaders/shine.gdshader" id="3_3kgpd"]
+[ext_resource type="Shader" uid="uid://jpickgb20rcm" path="res://shaders/sway.gdshader" id="4_6jc1s"]
+[ext_resource type="Shader" uid="uid://c1d2aig6k8f14" path="res://shaders/water.gdshader" id="5_s7vay"]
+[ext_resource type="Texture2D" uid="uid://c5piwreayir1w" path="res://assets/images/shapes/circle.svg" id="6_veqoy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u7wru"]
+shader = ExtResource("1_arvs4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kmh52"]
+shader = ExtResource("3_3kgpd")
+shader_parameter/size_effect = 0.3000000789763604
+shader_parameter/speed = 1.0
+shader_parameter/highlight_strength = 0.5
+shader_parameter/is_horizontal = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6p51u"]
+shader = ExtResource("4_6jc1s")
+shader_parameter/speed = 2.0
+shader_parameter/frequency_y = 5.0
+shader_parameter/frequency_x = 5.0
+shader_parameter/amplitude_y = 50.0
+shader_parameter/amplitude_x = 25.0
+shader_parameter/inclination = 50.0
+shader_parameter/rotation_angle = 0.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6p51u"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kmh52"]
+noise = SubResource("FastNoiseLite_6p51u")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cywfg"]
+shader = ExtResource("5_s7vay")
+shader_parameter/refraction_map = SubResource("NoiseTexture2D_kmh52")
+shader_parameter/refraction_stretch = Vector2(1, 1)
+shader_parameter/refraction_strength = 0.02
+shader_parameter/speed = 0.050000002375
+
+[node name="ShaderSandbox" type="CanvasLayer"]
+
+[node name="Grid" type="GridContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 3
+
+[node name="FlashShader" type="VBoxContainer" parent="Grid"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Grid/FlashShader"]
+layout_mode = 2
+text = "Flash"
+
+[node name="TextureRect" type="TextureRect" parent="Grid/FlashShader"]
+material = SubResource("ShaderMaterial_u7wru")
+instance_shader_parameters/flash_color = Color(0.9359088, 0, 0.50121075, 1)
+instance_shader_parameters/flash_strength = 0.0
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_nno83")
+
+[node name="ShineShader" type="VBoxContainer" parent="Grid"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Grid/ShineShader"]
+layout_mode = 2
+text = "Shine"
+
+[node name="TextureRect" type="TextureRect" parent="Grid/ShineShader"]
+self_modulate = Color(0.5890956, 0.5890956, 0.5890956, 1)
+material = SubResource("ShaderMaterial_kmh52")
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_nno83")
+
+[node name="SwayShader" type="VBoxContainer" parent="Grid"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Grid/SwayShader"]
+layout_mode = 2
+text = "Sway"
+
+[node name="TextureRect" type="TextureRect" parent="Grid/SwayShader"]
+material = SubResource("ShaderMaterial_6p51u")
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_nno83")
+
+[node name="WaterShader" type="VBoxContainer" parent="Grid"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Grid/WaterShader"]
+layout_mode = 2
+text = "Water"
+
+[node name="TextureRect" type="TextureRect" parent="Grid/WaterShader"]
+self_modulate = Color(0.38039216, 0.54901963, 0.92941177, 0.5411765)
+material = SubResource("ShaderMaterial_cywfg")
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_nno83")
+
+[node name="Example" type="TextureRect" parent="Grid/WaterShader/TextureRect"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("6_veqoy")

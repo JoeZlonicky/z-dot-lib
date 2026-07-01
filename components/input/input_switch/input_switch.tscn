@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3x5jppjkwwwq"]
+
+[ext_resource type="Script" uid="uid://w30b61ypt680" path="res://components/input/input_switch/input_switch.gd" id="1_jsn7l"]
+
+[node name="InputSwitch" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_jsn7l")
