@@ -1,11 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6ey0xs1uu3oc"]
+[gd_scene format=3 uid="uid://b6ey0xs1uu3oc"]
 
-[ext_resource type="Shader" uid="uid://cg88p5l0ygvye" path="res://shaders/flash.gdshader" id="1_arvs4"]
-[ext_resource type="Texture2D" uid="uid://djel6ygcmu3b3" path="res://assets/images/shapes/square.svg" id="2_nno83"]
-[ext_resource type="Shader" uid="uid://5rd1c2fix06r" path="res://shaders/shine.gdshader" id="3_3kgpd"]
-[ext_resource type="Shader" uid="uid://jpickgb20rcm" path="res://shaders/sway.gdshader" id="4_6jc1s"]
-[ext_resource type="Shader" uid="uid://c1d2aig6k8f14" path="res://shaders/water.gdshader" id="5_s7vay"]
-[ext_resource type="Texture2D" uid="uid://c5piwreayir1w" path="res://assets/images/shapes/circle.svg" id="6_veqoy"]
+[ext_resource type="Shader" uid="uid://cg88p5l0ygvye" path="res://lib/shaders/flash.gdshader" id="1_arvs4"]
+[ext_resource type="Texture2D" uid="uid://bn30anjn3osbm" path="res://icon.svg" id="2_nno83"]
+[ext_resource type="Shader" uid="uid://5rd1c2fix06r" path="res://lib/shaders/shine.gdshader" id="3_3kgpd"]
+[ext_resource type="Shader" uid="uid://jpickgb20rcm" path="res://lib/shaders/sway.gdshader" id="4_6jc1s"]
+[ext_resource type="Shader" uid="uid://c1d2aig6k8f14" path="res://lib/shaders/water.gdshader" id="5_s7vay"]
+[ext_resource type="Texture2D" uid="uid://bn30anjn3osbm" path="res://icon.svg" id="6_veqoy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u7wru"]
 shader = ExtResource("1_arvs4")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b5f3b1p65ay4q"
+
+[deps]
+
+files=["res://lib/lang/common_text.en.translation", "res://lib/lang/common_text.ja.translation"]
+
+source_file="res://lib/lang/common_text.csv"
+dest_files=["res://lib/lang/common_text.en.translation", "res://lib/lang/common_text.ja.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true
