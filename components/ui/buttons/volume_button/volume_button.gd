@@ -2,11 +2,11 @@ class_name VolumeButton
 extends Button
 
 
+@export_category(ExportCategories.CONFIG)
+@export_enum("Master", "Music", "SFX") var audio_bus: String = "Master"
+
 # Number of presses to go from 100 to 0
 @export_range(1, 20, 1) var n_increments = 5
-
-@export var audio_bus: String = "Master"
-
 
 var _volume_level: float = 100.0
 
@@ -14,9 +14,7 @@ var _volume_level: float = 100.0
 
 
 func _ready() -> void:
-	var bus_idx := AudioServer.get_bus_index(audio_bus)
-	assert(bus_idx > -1, ConfigurationWarnings.invalid_property(self, "audio_bus"))
-	
+	pressed.connect(_on_pressed)
 	_update_text()
 
 

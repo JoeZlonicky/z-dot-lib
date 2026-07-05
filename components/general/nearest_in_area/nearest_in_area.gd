@@ -10,6 +10,13 @@ var _nearest: CollisionObject2D = null
 var _is_updated: bool = false
 
 
+func _ready() -> void:
+	area_entered.connect(_on_area_or_body_entered)
+	body_entered.connect(_on_area_or_body_entered)
+	area_exited.connect(_on_area_or_body_exited)
+	body_exited.connect(_on_area_or_body_exited)
+
+
 func _physics_process(_delta: float) -> void:
 	_is_updated = false
 
@@ -52,17 +59,9 @@ func _is_in_line_of_sight(to: Vector2) -> bool:
 	return result.is_empty()
 
 
-func _on_area_entered(_area: Area2D) -> void:
+func _on_area_or_body_entered(_area: Node2D) -> void:
 	_is_updated = false
 
 
-func _on_body_entered(_body: PhysicsBody2D) -> void:
-	_is_updated = false
-
-
-func _on_area_exited(_area: Area2D) -> void:
-	_is_updated = false
-
-
-func _on_body_exited(_body: PhysicsBody2D) -> void:
+func _on_area_or_body_exited(_area: Node2D) -> void:
 	_is_updated = false

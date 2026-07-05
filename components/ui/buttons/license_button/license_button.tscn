@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://mr8w8fe8v0kn"]
+
+[ext_resource type="Script" uid="uid://b5pph526o4kvq" path="res://lib/components/ui/buttons/license_button/license_button.gd" id="1_a8g7m"]
+
+[node name="LicenseButton" type="Button" unique_id=83213412]
+text = "SETTINGS_GODOT_LICENSE"
+flat = true
+script = ExtResource("1_a8g7m")

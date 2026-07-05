@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://d34o2g1va8dgh"]
 
-[ext_resource type="Script" uid="uid://dgbgyk2453b7g" path="res://scenes/menus/pause_menu/pause_menu.gd" id="1_aubt2"]
-[ext_resource type="PackedScene" uid="uid://bp0bevgpkgj31" path="res://scenes/menus/settings_menu/settings_menu.tscn" id="2_m0udc"]
+[ext_resource type="Script" uid="uid://dgbgyk2453b7g" path="res://lib/scenes/pause_menu/pause_menu.gd" id="1_dhbkv"]
+[ext_resource type="PackedScene" uid="uid://bp0bevgpkgj31" path="res://scenes/menus/settings_menu/settings_menu.tscn" id="2_kda41"]
 
 [node name="PauseMenu" type="CanvasLayer" unique_id=1351992821]
 process_mode = 3
-script = ExtResource("1_aubt2")
+script = ExtResource("1_dhbkv")
 
 [node name="Dim" type="ColorRect" parent="." unique_id=535552208]
 anchors_preset = 15
@@ -102,7 +102,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "QUIT_CONFIRM_CANCEL"
 flat = true
 
-[node name="SettingsMenu" parent="." unique_id=930100985 instance=ExtResource("2_m0udc")]
+[node name="SettingsMenu" parent="." unique_id=930100985 instance=ExtResource("2_kda41")]
 visible = false
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

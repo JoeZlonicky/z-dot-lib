@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cp4pd8a0dbd16"]
+
+[ext_resource type="Script" uid="uid://b3yde2relh0pa" path="res://lib/components/ui/buttons/language_toggle_button/language_toggle_button.gd" id="1_ivmeq"]
+
+[node name="LanguageToggleButton" type="Button" unique_id=1860688582]
+text = "SETTINGS_LANGUAGE_TOGGLE"
+flat = true
+script = ExtResource("1_ivmeq")

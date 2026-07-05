@@ -44,6 +44,11 @@ func get_item_count(item_data: ItemData) -> int:
 	return _items.get(item_data, 0)
 
 
+func has_item(item_data: ItemData, quantity: int = 1) -> bool:
+	assert(quantity >= 0)
+	return get_item_count(item_data) >= quantity
+
+
 ## Removes all items.
 func empty() -> void:
 	_items.clear()

@@ -9,6 +9,11 @@ var _interactables_in_range: Array[InteractableArea] = []
 var _closest: InteractableArea = null
 
 
+func _ready() -> void:
+	area_entered.connect(_on_area_entered)
+	area_exited.connect(_on_area_exited)
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if not _closest or not event.is_action_pressed(interact_action):
 		return

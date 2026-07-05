@@ -2,7 +2,6 @@ class_name PauseMenu
 extends CanvasLayer
 
 
-
 @onready var options: VBoxContainer = $Options
 @onready var continue_button: Button = $Options/ContinueButton
 @onready var settings_button: Button = $Options/SettingsButton
@@ -20,10 +19,6 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	var game := GameUtility.get_game()
-	if game and not game.ball:
-		return
-	
 	if event.is_action_pressed("pause_toggle"):
 		if visible:
 			_close()
