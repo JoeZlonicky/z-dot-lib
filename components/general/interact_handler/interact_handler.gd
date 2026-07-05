@@ -1,4 +1,3 @@
-class_name InteractHandler
 extends Area2D
 ## An [Area2D] that can interact with [InteractableArea]s.
 

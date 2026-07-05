@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://levydfyuvftl"]
+
+[ext_resource type="Script" uid="uid://ct3x5brpvcegy" path="res://lib/components/ui/buttons/toggle_visibility_button/toggle_visibility_button.gd" id="1_56s10"]
+
+[node name="ToggleVisibilityButton" type="Button" unique_id=606745922]
+mouse_default_cursor_shape = 2
+flat = true
+script = ExtResource("1_56s10")

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cs3e5cs1hbgl"]
+
+[ext_resource type="Script" uid="uid://bsio5t3bdtc8x" path="res://lib/components/ui/buttons/quit_button/quit_button.gd" id="1_mc653"]
+
+[node name="QuitButton" type="Button" unique_id=2110004318]
+mouse_default_cursor_shape = 2
+text = "PAUSED_QUIT"
+flat = true
+script = ExtResource("1_mc653")

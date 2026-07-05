@@ -4,18 +4,8 @@ extends CanvasLayer
 
 @onready var options: VBoxContainer = $Options
 @onready var continue_button: Button = $Options/ContinueButton
-@onready var settings_button: Button = $Options/SettingsButton
-@onready var quit_button: Button = $Options/QuitButton
 
 @onready var confirm_quit: VBoxContainer = $ConfirmQuit
-@onready var confirm_button: Button = $ConfirmQuit/ConfirmButton
-
-@onready var settings_menu: SettingsMenu = $SettingsMenu
-
-
-func _ready() -> void:
-	if OS.get_name() == "Web":
-		quit_button.hide()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -27,54 +17,20 @@ func _unhandled_input(event: InputEvent) -> void:
 			show()
 		get_viewport().set_input_as_handled()
 	
-	elif visible and event.is_action_pressed("ui_cancel"):
-		if settings_menu.visible:
-			_on_settings_menu_back_pressed()
-		elif confirm_quit.visible:
-			_on_cancel_button_pressed()
-		else:
-			_close()
+	#elif visible and event.is_action_pressed("ui_cancel"):
+		#if settings_menu.visible:
+			#_on_settings_menu_back_pressed()
+		#else:
+		#	_close()
 
 
 func _close() -> void:
 	get_tree().paused = false
 	options.show()
-	settings_menu.hide()
+	#settings_menu.hide()
 	confirm_quit.hide()
 	hide()
 
 
 func _on_continue_button_pressed() -> void:
 	_close()
-
-
-func _on_settings_button_pressed() -> void:
-	options.hide()
-	settings_menu.show()
-
-
-func _on_quit_button_pressed() -> void:
-	options.hide()
-	confirm_quit.show()
-	InputDeviceListener.focus_depending_on_device(confirm_button)
-
-
-func _on_confirm_button_pressed() -> void:
-	get_tree().quit()
-
-
-func _on_cancel_button_pressed() -> void:
-	options.show()
-	confirm_quit.hide()
-	InputDeviceListener.focus_depending_on_device(quit_button)
-
-
-func _on_visibility_changed() -> void:
-	if visible:
-		InputDeviceListener.focus_depending_on_device(continue_button)
-
-
-func _on_settings_menu_back_pressed() -> void:
-	settings_menu.hide()
-	options.show()
-	InputDeviceListener.focus_depending_on_device(settings_button)

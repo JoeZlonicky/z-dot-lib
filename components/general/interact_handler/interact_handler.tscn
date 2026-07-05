@@ -4,6 +4,6 @@
 
 [node name="InteractHandler" type="Area2D" unique_id=962981673]
 collision_layer = 0
-collision_mask = 32
+collision_mask = 2
 script = ExtResource("1_e2tss")
 interact_action = &"interact"

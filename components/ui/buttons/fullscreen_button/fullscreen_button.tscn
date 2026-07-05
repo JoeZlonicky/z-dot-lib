@@ -3,5 +3,6 @@
 [ext_resource type="Script" uid="uid://ofra8qmjtxes" path="res://lib/components/ui/buttons/fullscreen_button/fullscreen_button.gd" id="1_vjdt6"]
 
 [node name="FullscreenButton" type="Button" unique_id=832611183]
+mouse_default_cursor_shape = 2
 flat = true
 script = ExtResource("1_vjdt6")

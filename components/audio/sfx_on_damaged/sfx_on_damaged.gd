@@ -1,4 +1,3 @@
-class_name SFXOnDamaged
 extends AudioStreamPlayer2D
 ## [AudioStreamPlayer2D] that starts playing when [Health] is damaged
 

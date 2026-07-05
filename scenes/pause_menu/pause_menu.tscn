@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://d34o2g1va8dgh"]
 
 [ext_resource type="Script" uid="uid://dgbgyk2453b7g" path="res://lib/scenes/pause_menu/pause_menu.gd" id="1_dhbkv"]
+[ext_resource type="PackedScene" uid="uid://be4ilohcv0h4w" path="res://lib/components/ui/focus_on_visible/focus_on_visible.tscn" id="2_g10c1"]
 [ext_resource type="PackedScene" uid="uid://bp0bevgpkgj31" path="res://scenes/menus/settings_menu/settings_menu.tscn" id="2_kda41"]
+[ext_resource type="PackedScene" uid="uid://levydfyuvftl" path="res://lib/components/ui/buttons/toggle_visibility_button/toggle_visibility_button.tscn" id="3_g10c1"]
+[ext_resource type="PackedScene" uid="uid://cs3e5cs1hbgl" path="res://lib/components/ui/buttons/quit_button/quit_button.tscn" id="4_1mqt5"]
+[ext_resource type="PackedScene" uid="uid://bj133batutg7p" path="res://lib/components/ui/hide_in_web/hide_in_web.tscn" id="4_elusq"]
 
 [node name="PauseMenu" type="CanvasLayer" unique_id=1351992821]
 process_mode = 3
@@ -34,31 +38,26 @@ uppercase = true
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
-theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "PAUSED_CONTINUE"
 flat = true
 
-[node name="SettingsButton" type="Button" parent="Options" unique_id=2100075004]
-layout_mode = 2
-size_flags_horizontal = 4
-mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
-theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-text = "PAUSED_SETTINGS"
-flat = true
+[node name="FocusOnVisible" parent="Options/ContinueButton" unique_id=1118151319 node_paths=PackedStringArray("control") instance=ExtResource("2_g10c1")]
+control = NodePath("..")
 
-[node name="QuitButton" type="Button" parent="Options" unique_id=715263760]
+[node name="SettingsButton" parent="Options" unique_id=606745922 node_paths=PackedStringArray("show_canvas_layers", "hide_canvas_items") instance=ExtResource("3_g10c1")]
 layout_mode = 2
-size_flags_horizontal = 4
-mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
-theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+text = "PAUSED_SETTINGS"
+show_canvas_layers = [NodePath("../../SettingsMenu")]
+hide_canvas_items = [NodePath("..")]
+
+[node name="QuitButton" parent="Options" unique_id=517231563 node_paths=PackedStringArray("show_canvas_items", "hide_canvas_items") instance=ExtResource("3_g10c1")]
+layout_mode = 2
 text = "PAUSED_QUIT"
-flat = true
+show_canvas_items = [NodePath("../../ConfirmQuit")]
+hide_canvas_items = [NodePath("..")]
+
+[node name="HideInWeb" parent="Options/QuitButton" unique_id=1286186158 node_paths=PackedStringArray("canvas_items") instance=ExtResource("4_elusq")]
+canvas_items = [NodePath("..")]
 
 [node name="ConfirmQuit" type="VBoxContainer" parent="." unique_id=36415557]
 visible = false
@@ -82,33 +81,26 @@ text = "QUIT_CONFIRM_MESSAGE"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="ConfirmButton" type="Button" parent="ConfirmQuit" unique_id=872215838]
+[node name="ConfirmButton" parent="ConfirmQuit" unique_id=2110004318 instance=ExtResource("4_1mqt5")]
 layout_mode = 2
-size_flags_horizontal = 4
-mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
-theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "QUIT_CONFIRM_CONFIRM"
-flat = true
 
-[node name="CancelButton" type="Button" parent="ConfirmQuit" unique_id=309284174]
+[node name="FocusOnVisible" parent="ConfirmQuit/ConfirmButton" unique_id=1950678048 node_paths=PackedStringArray("control") instance=ExtResource("2_g10c1")]
+control = NodePath("..")
+
+[node name="CancelButton" parent="ConfirmQuit" unique_id=1188320075 node_paths=PackedStringArray("show_canvas_items", "hide_canvas_items") instance=ExtResource("3_g10c1")]
 layout_mode = 2
-size_flags_horizontal = 4
-mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
-theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "QUIT_CONFIRM_CANCEL"
-flat = true
+show_canvas_items = [NodePath("../../Options")]
+hide_canvas_items = [NodePath("..")]
+trigger_on_ui_cancel = true
 
 [node name="SettingsMenu" parent="." unique_id=930100985 instance=ExtResource("2_kda41")]
 visible = false
 
-[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[node name="BackButton" parent="SettingsMenu/Settings" parent_id_path=PackedInt32Array(930100985, 1289317498) index="6" unique_id=606745922 node_paths=PackedStringArray("show_canvas_items")]
+show_canvas_items = [NodePath("../../../Options")]
+
 [connection signal="pressed" from="Options/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="Options/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="Options/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="ConfirmQuit/ConfirmButton" to="." method="_on_confirm_button_pressed"]
-[connection signal="pressed" from="ConfirmQuit/CancelButton" to="." method="_on_cancel_button_pressed"]
-[connection signal="back_pressed" from="SettingsMenu" to="." method="_on_settings_menu_back_pressed"]
+
+[editable path="SettingsMenu"]

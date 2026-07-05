@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://kel86f0b8nov"]
+[gd_scene format=3 uid="uid://kel86f0b8nov"]
 
-[ext_resource type="Script" uid="uid://cga638ftafsqb" path="res://components/general/interactable_area/interactable_area.gd" id="1_md2yd"]
+[ext_resource type="Script" uid="uid://cga638ftafsqb" path="res://lib/components/general/interactable_area/interactable_area.gd" id="1_md2yd"]
 
-[node name="InteractableArea" type="Area2D"]
-collision_layer = 32
+[node name="InteractableArea" type="Area2D" unique_id=460380024]
+collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_md2yd")

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bj133batutg7p"]
+
+[ext_resource type="Script" uid="uid://dgkavcrk278ro" path="res://lib/components/ui/hide_in_web/hide_in_web.gd" id="1_2kkdo"]
+
+[node name="HideInWeb" type="Node" unique_id=1286186158]
+script = ExtResource("1_2kkdo")

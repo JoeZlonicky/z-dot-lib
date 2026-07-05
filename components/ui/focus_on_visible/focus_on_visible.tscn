@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://be4ilohcv0h4w"]
+
+[ext_resource type="Script" uid="uid://darncsytlyaen" path="res://lib/components/ui/focus_on_visible/focus_on_visible.gd" id="1_stxut"]
+
+[node name="FocusOnVisible" type="Node" unique_id=1118151319]
+script = ExtResource("1_stxut")
