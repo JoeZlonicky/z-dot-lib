@@ -14,11 +14,12 @@ func _ready() -> void:
 	pressed.connect(_on_pressed)
 
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if not trigger_on_ui_cancel: return
 	
 	if event.is_action_pressed("ui_cancel") and is_visible_in_tree():
 		_on_pressed()
+		get_viewport().set_input_as_handled()
 
 
 func _on_pressed() -> void:

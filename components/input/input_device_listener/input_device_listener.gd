@@ -17,6 +17,10 @@ var _current_device: Device = Device.NONE
 var _mouse_over_keyboard: bool = false
 
 
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and not _is_mobile():
 		if (event as InputEventMouseMotion).relative.length() > MOUSE_DISTANCE_THRESHOLD:

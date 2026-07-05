@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://5b5qe7nd36po"]
+
+[ext_resource type="Script" uid="uid://b6fvor24cr2bi" path="res://lib/components/ui/pause_toggle/pause_toggle.gd" id="1_h54us"]
+
+[node name="PauseToggle" type="Node" unique_id=1680868309]
+script = ExtResource("1_h54us")
