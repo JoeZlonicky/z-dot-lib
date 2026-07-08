@@ -5,6 +5,7 @@ extends Label
 signal finished
 
 @export_range(1, 200, 1, "suffix:ms") var time_per_character: float = 50.0
+@export var play_audio_while_typing: AudioStreamPlayer
 
 var _timer_ms: float = 0.0
 
@@ -12,6 +13,9 @@ var _timer_ms: float = 0.0
 func _process(delta: float) -> void:
 	if visible_characters == -1 or visible_characters >= text.length():
 		return
+	
+	if play_audio_while_typing:
+		play_audio_while_typing.playing = true
 	
 	_timer_ms += delta * 1000.0
 	while _timer_ms > time_per_character:
