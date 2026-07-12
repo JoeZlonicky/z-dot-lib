@@ -1,6 +1,7 @@
 class_name CameraUtility
 
 
+## Set a camera's left/right/top/bottom limits using a [Rect2] bounds
 static func set_limits_from_rect(camera: Camera2D, rect: Rect2) -> void:
 	camera.limit_left = floori(rect.position.x)
 	camera.limit_right = ceil(rect.position.x + rect.size.x)

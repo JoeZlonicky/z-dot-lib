@@ -1,12 +1,13 @@
 class_name VolumeButton
 extends Button
+## Decrements an audio bus volume when pressed
 
 
 @export_category(ExportCategories.CONFIG)
 @export_enum("Master", "Music", "SFX") var audio_bus: String = "Master"
 
 # Number of presses to go from 100 to 0
-@export_range(1, 20, 1) var n_increments = 5
+@export_range(1, 20, 1) var n_increments: int = 5
 
 var _volume_level: float = 100.0
 

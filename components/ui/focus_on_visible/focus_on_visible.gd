@@ -1,4 +1,5 @@
 extends Node
+## Focuses a [Control] when the [Control] becomes visible
 
 
 @export_category(ExportCategories.REQUIRED)
@@ -17,7 +18,7 @@ func _focus_if_visible() -> void:
 	if not control or not control.is_visible_in_tree():
 		return
 	
-	InputDeviceListener.focus_depending_on_device(control)
+	UIUtility.focus_depending_on_device(control)
 
 
 func _on_control_visiblity_changed() -> void:

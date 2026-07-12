@@ -1,9 +1,10 @@
 class_name DevOptions
 extends HBoxContainer
+## Creates a togglable menu of options for a dev menu
 
 
-@export_range(4, 128, 1) var font_size: int = 16
-@export_range(16, 400) var menu_width: int = 160
+@export_range(4, 128, 1) var _font_size: int = 16
+@export_range(16, 400) var _menu_width: int = 160
 
 
 func create_menu(title: String, options: Dictionary[String, Callable]) -> void:
@@ -18,8 +19,8 @@ func _create_dropdown_toggle(title: String) -> Button:
 	var button := Button.new()
 	button.toggle_mode = true
 	button.text = title
-	button.custom_minimum_size = Vector2(menu_width, 0)
-	button.add_theme_font_size_override("font_size", font_size)
+	button.custom_minimum_size = Vector2(_menu_width, 0)
+	button.add_theme_font_size_override("font_size", _font_size)
 	add_child(button)
 	return button
 
@@ -36,8 +37,8 @@ func _create_dropdown(dropdown_button: Button) -> VBoxContainer:
 func _add_to_dropdown(dropdown: VBoxContainer, label: String, f: Callable) -> void:
 	var option_button := Button.new()
 	option_button.text = label
-	option_button.custom_minimum_size = Vector2(menu_width, 0)
-	option_button.add_theme_font_size_override("font_size", font_size)
+	option_button.custom_minimum_size = Vector2(_menu_width, 0)
+	option_button.add_theme_font_size_override("font_size", _font_size)
 	option_button.pressed.connect(f)
 	dropdown.add_child(option_button)
 

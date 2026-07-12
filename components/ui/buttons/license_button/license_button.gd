@@ -1,4 +1,5 @@
 extends Button
+## Opens the Godot license page when pressed
 
 
 func _ready() -> void:

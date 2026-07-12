@@ -4,6 +4,7 @@ extends Node
 
 
 @export_category(ExportCategories.REQUIRED)
+
 @export var _main_scene: PackedScene
 
 @export_category(ExportCategories.CONFIG)
@@ -15,6 +16,7 @@ extends Node
 @export var _debug_mute_audio: bool = false
 
 @export_category(ExportCategories.OPTIONAL)
+
 ## Launch with a different scene only when in debug mode
 @export var _debug_main_scene: PackedScene
 

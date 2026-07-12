@@ -1,5 +1,5 @@
 extends Node
-
+## Tracks changes in the player's input device
 
 signal switched_device(type: Device)
 
@@ -47,11 +47,6 @@ func get_current_device() -> Device:
 
 func is_kbm_mouse_user() -> bool:
 	return _current_device == Device.KBM && _mouse_over_keyboard
-
-
-func focus_depending_on_device(control: Control) -> void:
-	var hide_focus := is_kbm_mouse_user()
-	control.grab_focus(hide_focus)
 
 
 func _set_device(device: Device) -> void:

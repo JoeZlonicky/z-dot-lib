@@ -1,4 +1,5 @@
 extends Button
+## Toggles between fullscreen and windowed mode on being pressed
 
 
 func _ready() -> void:

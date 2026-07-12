@@ -1,4 +1,5 @@
 extends Node
+## Hides a [CanvasItem] if running in a web environment
 
 
 @export var canvas_items: Array[CanvasItem]

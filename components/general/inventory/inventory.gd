@@ -1,9 +1,14 @@
 class_name Inventory
 extends RefCounted
+## Manages a dictionary of items ([Resource]) with quantities
 
-
+## Emitted when some amount of an item is added
 signal item_added(item_data: Resource, n: int)
+
+## Emitted when some amount of an item is removed
 signal item_removed(item_data: Resource, n: int)
+
+## Emitted when sopme amount of an item is added or removed
 signal changed
 
 var _items: Dictionary[Resource, int] = {}
@@ -44,6 +49,7 @@ func get_item_count(item_data: Resource) -> int:
 	return _items.get(item_data, 0)
 
 
+## Returns true if there is more than a given number of an item
 func has_item(item_data: Resource, quantity: int = 1) -> bool:
 	assert(quantity >= 0)
 	return get_item_count(item_data) >= quantity

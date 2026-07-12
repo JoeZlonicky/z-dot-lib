@@ -1,4 +1,5 @@
 extends Button
+# Toggles between Japanese and English when pressed
 
 
 func _ready() -> void:

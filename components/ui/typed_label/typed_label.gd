@@ -1,10 +1,15 @@
 class_name TypedLabel
 extends Label
+## "Types" out characters
 
 
+## Emitted when all characters have been typed out
 signal finished
 
+## How many ms it takes for on character to be typed
 @export_range(1, 200, 1, "suffix:ms") var time_per_character: float = 50.0
+
+## If set will set the [AudioStreamPlayer] to be playing while typing
 @export var play_audio_while_typing: AudioStreamPlayer
 
 var _timer_ms: float = 0.0

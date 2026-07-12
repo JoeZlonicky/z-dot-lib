@@ -1,6 +1,7 @@
 class_name LangUtility
 
 
+## Toggle between Japanese and English
 static func toggle_japanese() -> void:
 	var locale := TranslationServer.get_locale()
 	if locale == "ja":

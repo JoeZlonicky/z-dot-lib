@@ -1,5 +1,6 @@
 class_name TransitionScreen
 extends CanvasLayer
+# Simple transition screen that can fade to/from black
 
 
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer

@@ -1,6 +1,7 @@
 class_name FileUtility
 
 
+## Get all files under a folder, optionally filtering by file name suffix
 static func get_all_files_under_folder(folder_path: String,
 		file_ending: String = "") -> Array[String]:
 	var paths: Array[String] = []

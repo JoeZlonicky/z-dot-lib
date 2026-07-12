@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcr8wf7ic6r8e"]
+[gd_scene format=3 uid="uid://dcr8wf7ic6r8e"]
 
-[ext_resource type="Script" uid="uid://dyjwfqyabdwxu" path="res://components/ui/transition_screen/transition_screen.gd" id="1_dj52f"]
+[ext_resource type="Script" uid="uid://dyjwfqyabdwxu" path="res://lib/components/ui/transition_screen/transition_screen.gd" id="1_dj52f"]
 
 [sub_resource type="Animation" id="Animation_h3c5a"]
 length = 0.001
@@ -148,11 +148,11 @@ _data = {
 &"fade_to_white": SubResource("Animation_547nv")
 }
 
-[node name="TransitionScreen" type="CanvasLayer"]
+[node name="TransitionScreen" type="CanvasLayer" unique_id=1859348217]
 layer = 2
 script = ExtResource("1_dj52f")
 
-[node name="BlackScreen" type="ColorRect" parent="."]
+[node name="BlackScreen" type="ColorRect" parent="." unique_id=198981608]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -162,9 +162,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=851974725]
 process_mode = 3
-libraries = {
-&"": SubResource("AnimationLibrary_ttnxe")
-}
-autoplay = "fade_from_black"
+libraries/ = SubResource("AnimationLibrary_ttnxe")
+autoplay = &"fade_from_black"

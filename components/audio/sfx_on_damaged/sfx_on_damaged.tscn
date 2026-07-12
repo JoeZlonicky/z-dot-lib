@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://c362cd6lr1qla"]
+[gd_scene format=3 uid="uid://c362cd6lr1qla"]
 
-[ext_resource type="Script" uid="uid://clju1by0siupm" path="res://components/audio/sfx_on_damaged/sfx_on_damaged.gd" id="1_3pbdl"]
+[ext_resource type="Script" uid="uid://clju1by0siupm" path="res://lib/components/audio/sfx_on_damaged/sfx_on_damaged.gd" id="1_3pbdl"]
 
-[node name="SFXOnDamaged" type="AudioStreamPlayer2D"]
+[node name="SFXOnDamaged" type="AudioStreamPlayer2D" unique_id=564240931]
 script = ExtResource("1_3pbdl")

@@ -1,4 +1,5 @@
 extends Button
+## Exits the application when pressed
 
 
 func _ready() -> void:

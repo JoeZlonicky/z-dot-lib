@@ -1,5 +1,6 @@
 class_name DialogueQueue
 extends Node
+## Processes a queue of dialogue
 
 
 signal started
@@ -13,7 +14,7 @@ class QueuedDialogue:
 	var text: String
 	var options: Dictionary[String, Callable]
 	
-	func _init(p_text = "", p_title: String = "",
+	func _init(p_text: String = "", p_title: String = "",
 			p_options: Dictionary[String, Callable] = {}) -> void:
 		title = p_title
 		text = p_text
@@ -49,6 +50,7 @@ func add(dialogue: String = "", title: String = "",
 	
 	if not _current_dialogue:
 		_next_dialogue()
+		started.emit()
 	
 	await q_dialogue.finished
 
@@ -82,10 +84,6 @@ func _next_dialogue() -> void:
 	_title_label.text = tr(_current_dialogue.title)
 	_title_panel.visible = _current_dialogue.title.length() > 0
 	_current_dialogue.started.emit()
-	#if not visible:
-	#	_animate_first_dialogue()
-	
-	started.emit()
 
 
 func _handle_finished_dialogue() -> void:
@@ -103,7 +101,7 @@ func _populate_options(options: Dictionary[String, Callable]) -> void:
 		button.text = tr(option)
 		_options_container.add_child(button)
 		
-		var on_pressed = func ():
+		var on_pressed := func () -> void:
 			options[option].call()
 			_next_dialogue()
 		button.pressed.connect(on_pressed)

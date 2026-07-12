@@ -1,5 +1,6 @@
 class_name FollowTarget
 extends Node
+## Has a [Node2D] follow another [Node2D]
 
 
 @export_category(ExportCategories.REQUIRED)

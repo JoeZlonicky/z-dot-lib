@@ -1,4 +1,5 @@
 extends Button
+## Shows or hides [CanvasLayer] or [CanvasItem]s when pressed
 
 
 @export var show_canvas_items: Array[CanvasItem]

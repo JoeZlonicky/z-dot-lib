@@ -1,4 +1,5 @@
 extends Node
+## Toggles pause state depending on being visible or not
 
 
 @export var canvas_layer: CanvasLayer
