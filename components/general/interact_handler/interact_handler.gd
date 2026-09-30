@@ -1,6 +1,9 @@
+class_name InteractHandler
 extends Area2D
 ## An [Area2D] that can interact with [InteractableArea]s.
 
+signal new_closest_set(interactable: InteractableArea)
+signal no_closest_set
 
 @export_custom(PROPERTY_HINT_INPUT_NAME, "") var interact_action: StringName
 
@@ -25,6 +28,10 @@ func _physics_process(_delta: float) -> void:
 	_update_closest()
 
 
+func has_interactable_in_range() -> bool:
+	return _closest != null
+
+
 func _update_closest() -> void:
 	var closest_distance_squared := INF
 	var closest_interactable: InteractableArea = null
@@ -47,6 +54,9 @@ func _set_new_closest(new_closet: InteractableArea) -> void:
 	_closest = new_closet
 	if _closest:
 		_closest.update_prioritized(true)
+		new_closest_set.emit(_closest)
+	else:
+		no_closest_set.emit()
 
 
 func _on_area_entered(interactable: InteractableArea) -> void:
