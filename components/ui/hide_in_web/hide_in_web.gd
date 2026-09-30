@@ -6,7 +6,7 @@ extends Node
 
 
 func _ready() -> void:
-	if OS.get_name() != "Web":
+	if !DeviceUtility.is_web():
 		return
 	
 	for c in canvas_items:
