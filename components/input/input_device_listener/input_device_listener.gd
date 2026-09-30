@@ -22,11 +22,11 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion and not _is_mobile():
+	if event is InputEventMouseMotion and not DeviceUtility.is_mobile():
 		if (event as InputEventMouseMotion).relative.length() > MOUSE_DISTANCE_THRESHOLD:
 			_set_device(Device.KBM)
 			_mouse_over_keyboard = true
-	elif event is InputEventKey or event is InputEventMouse and not _is_mobile():
+	elif event is InputEventKey or event is InputEventMouse and not DeviceUtility.is_mobile():
 		if event is InputEventKey:
 			_mouse_over_keyboard = false
 		_set_device(Device.KBM)
@@ -37,7 +37,7 @@ func _input(event: InputEvent) -> void:
 			_set_device(Device.CONTROLLER)
 	elif event is InputEventScreenTouch:
 		_set_device(Device.TOUCH)
-	elif event is InputEventMouseButton and _is_mobile():
+	elif event is InputEventMouseButton and DeviceUtility.is_mobile():
 		_set_device(Device.TOUCH)
 
 
@@ -55,7 +55,3 @@ func _set_device(device: Device) -> void:
 	
 	_current_device = device
 	switched_device.emit(device)
-
-
-func _is_mobile() -> bool:
-	return OS.get_name() == "Android" or OS.get_name() == "iOS"
