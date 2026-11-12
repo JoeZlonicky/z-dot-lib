@@ -13,12 +13,15 @@ class QueuedDialogue:
 	var title: String
 	var text: String
 	var options: Dictionary[String, Callable]
+	var reward: Texture
 	
 	func _init(p_text: String = "", p_title: String = "",
-			p_options: Dictionary[String, Callable] = {}) -> void:
+			p_options: Dictionary[String, Callable] = {},
+			p_reward: Texture = null) -> void:
 		title = p_title
 		text = p_text
 		options = p_options
+		reward = p_reward
 
 
 @export var _title_label: Label
@@ -26,6 +29,10 @@ class QueuedDialogue:
 @export var _title_panel: Control
 @export var _options_container: GridContainer
 @export var _option_button_scene: PackedScene
+@export var _sfx_on_reward: AudioStreamPlayer
+
+@onready var _reward_container: PanelContainer = %RewardContainer
+@onready var _reward_texture: TextureRect = %RewardTexture
 
 
 var _current_dialogue: QueuedDialogue = null
@@ -44,8 +51,9 @@ func next() -> void:
 
 
 func add(dialogue: String = "", title: String = "",
-		options: Dictionary[String, Callable] = {}) -> void:
-	var q_dialogue := QueuedDialogue.new(dialogue, title, options)
+		options: Dictionary[String, Callable] = {},
+		reward: Texture = null) -> void:
+	var q_dialogue := QueuedDialogue.new(dialogue, title, options, reward)
 	_queued_dialogue.push_back(q_dialogue)
 	
 	if not _current_dialogue:
@@ -81,8 +89,18 @@ func _next_dialogue() -> void:
 	else:
 		_options_container.hide()
 	
+	if _current_dialogue.reward:
+		_reward_texture.texture = _current_dialogue.reward
+		_reward_container.show()
+		if _sfx_on_reward:
+			_sfx_on_reward.play()
+	else:
+		_reward_container.hide()
+	
 	_title_label.text = tr(_current_dialogue.title)
 	_title_panel.visible = _current_dialogue.title.length() > 0
+	_typed_label.audio_while_typing_enabled = _title_panel.visible
+	
 	_current_dialogue.started.emit()
 
 
