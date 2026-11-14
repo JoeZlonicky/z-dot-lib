@@ -31,8 +31,8 @@ class QueuedDialogue:
 @export var _option_button_scene: PackedScene
 @export var _sfx_on_reward: AudioStreamPlayer
 
-@onready var _reward_container: PanelContainer = %RewardContainer
-@onready var _reward_texture: TextureRect = %RewardTexture
+@export var _reward_container: PanelContainer
+@export var _reward_texture: TextureRect
 
 
 var _current_dialogue: QueuedDialogue = null
