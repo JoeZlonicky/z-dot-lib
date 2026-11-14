@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dx64o4ufhpr0p"]
+
+[ext_resource type="Script" uid="uid://bf3dcw2wxml7s" path="res://lib/components/ui/buttons/change_scene_button/change_scene_button.gd" id="1_bua1m"]
+
+[node name="ChangeSceneButton" type="Button" unique_id=2110004318]
+mouse_default_cursor_shape = 2
+text = "PAUSED_TO_MAIN_MENU"
+flat = true
+script = ExtResource("1_bua1m")
