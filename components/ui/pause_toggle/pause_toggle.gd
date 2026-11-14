@@ -6,6 +6,7 @@ extends Node
 
 
 func _ready() -> void:
+	tree_exiting.connect(_on_tree_exiting)
 	if not canvas_layer:
 		return
 	
@@ -31,3 +32,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_canvas_layer_visibility_changed() -> void:
 	if not canvas_layer.visible and get_tree().paused:
 		get_tree().paused = false
+
+
+func _on_tree_exiting() -> void:
+	get_tree().paused = false
